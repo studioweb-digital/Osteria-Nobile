@@ -1,322 +1,517 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Osteria Nobile. Cucina italiana contemporanea, ingredienti di stagione e il piacere di stare a tavola.">
+<meta name="theme-color" content="#202a22">
+<meta name="description" content="Osteria Nobile. Il gusto della bellezza. Un'esperienza di cucina italiana contemporanea.">
 <title>Osteria Nobile — Il gusto della bellezza</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+
 <style>
-:root{--cream:#f4f0e7;--green:#26372d;--dark:#1d2821;--gold:#b69a68;--grey:#77766d;--serif:'Italiana',Georgia,serif;--sans:'DM Sans',sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --verde:#26372d;
+  --verde-scuro:#202a22;
+  --avorio:#f4f0e7;
+  --oro:#b69a68;
+  --testo:#292b25;
+  --grigio:#77766e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--avorio);color:var(--testo)}
 a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-.container{width:min(1200px,88%);margin:auto}
-.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--gold)}
-h2{font-family:var(--serif);font-size:clamp(48px,7vw,88px);font-weight:400;line-height:1.02}
-.line{height:1px;width:55px;background:var(--gold);margin:25px 0}
-.btn{display:inline-block;padding:16px 25px;background:var(--gold);color:#fff;text-transform:uppercase;font-size:9px;letter-spacing:2px;border:1px solid var(--gold);transition:.3s}
-.btn:hover{background:transparent;color:var(--gold)}
-.btn-outline{background:transparent;color:#fff}
-.btn-outline:hover{background:var(--gold);color:white}
-header{position:fixed;top:0;left:0;width:100%;z-index:10;padding:24px 0;color:white;transition:.3s}
-header.scrolled{background:rgba(244,240,231,.97);color:var(--green);padding:15px 0;box-shadow:0 5px 25px #0000000c}
-.nav{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--serif);font-size:29px;letter-spacing:2px}
-.logo small{display:block;font-family:var(--sans);font-size:7px;letter-spacing:4px;text-align:center;margin-top:3px}
-.links{display:flex;align-items:center;gap:30px}
-.links a{font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
-.links a:hover{color:var(--gold)}
-.links .reservation{border:1px solid var(--gold);padding:12px 16px}
-.toggle{display:none;background:none;border:0;color:inherit;font-size:26px}
-.hero{height:100svh;min-height:650px;position:relative;display:flex;align-items:center;color:white;background:linear-gradient(90deg,rgba(15,25,18,.78),rgba(15,25,18,.12)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=90') center/cover}
-.hero-content{width:min(1200px,88%);margin:auto;padding-top:50px}
-.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(75px,12vw,155px);line-height:.82;margin:28px 0}
-.hero h1 em{color:#d4bd91;font-style:normal}
-.hero p{font-size:13px;line-height:2;color:#ffffffc9;max-width:430px;margin-bottom:32px}
-.hero-bottom{position:absolute;bottom:30px;left:6%;right:6%;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#ffffffad}
-.intro{text-align:center;padding:140px 0}
-.intro p{max-width:670px;margin:30px auto 0;font-family:var(--serif);font-size:27px;line-height:1.5;color:#77766d}
-.story{display:grid;grid-template-columns:1fr 1fr;background:var(--green);color:var(--cream);min-height:650px}
-.story-image{background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1300&q=85') center/cover}
-.story-copy{padding:100px clamp(35px,8vw,120px);display:flex;flex-direction:column;justify-content:center}
-.story-copy p{font-size:13px;line-height:2;color:#ffffffad;max-width:430px}
-.story-copy .btn{align-self:flex-start;margin-top:30px}
-.menu{padding:130px 0}
-.heading{text-align:center;margin-bottom:65px}
-.heading p{font-size:12px;color:var(--grey);margin-top:15px}
-.tabs{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-bottom:45px}
-.tabs button{border:0;background:none;color:var(--grey);font-size:10px;text-transform:uppercase;letter-spacing:2px;padding-bottom:10px;cursor:pointer}
-.tabs button.active{color:var(--green);border-bottom:1px solid var(--gold)}
-.dishes{max-width:760px;margin:auto}
-.dish{display:flex;justify-content:space-between;gap:20px;padding:23px 0;border-bottom:1px solid #26372d25}
-.dish h3{font-family:var(--serif);font-size:26px;font-weight:400}
-.dish p{font-size:11px;color:var(--grey);margin-top:7px;line-height:1.7}
-.dish strong{font-family:var(--serif);font-size:23px;color:var(--green);font-weight:400;white-space:nowrap}
-.quote{padding:110px 20px;text-align:center;background:#e9e3d7}
-.quote blockquote{font-family:var(--serif);font-size:clamp(35px,6vw,65px);max-width:900px;margin:25px auto;color:var(--green);line-height:1.15}
-.quote p{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--grey)}
-.experience{padding:130px 0}
-.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.exp-image{height:600px;background:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85') center/cover}
-.exp-copy p{font-size:13px;line-height:2;color:var(--grey);margin-top:25px;max-width:450px}
-.values{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:35px}
-.value{border-top:1px solid #b69a6870;padding-top:15px}
-.value strong{font-family:var(--serif);font-size:24px;font-weight:400}
-.value span{display:block;font-size:10px;color:var(--grey);margin-top:5px}
-.gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:270px 270px;gap:7px}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:.6s}
-.gallery figure{overflow:hidden}
-.gallery figure:hover img{transform:scale(1.05)}
-.gallery .large{grid-row:span 2}
-.booking{background:var(--dark);color:var(--cream);padding:130px 0}
-.booking-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px}
-.booking-copy p{font-size:13px;line-height:2;color:#ffffffad;margin-top:25px;max-width:360px}
-.booking-copy .note{font-size:10px;color:var(--gold);margin-top:35px;line-height:1.8}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.field{display:flex;flex-direction:column;gap:9px}
-.field.full{grid-column:1/-1}
-.field label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
-.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid #ffffff50;color:white;padding:13px 0;outline:none;width:100%;border-radius:0}
-.field select option{color:#1d2821}
-.field textarea{min-height:80px;resize:vertical}
-.form button{grid-column:1/-1;justify-self:start;margin-top:15px;cursor:pointer}
-#message{grid-column:1/-1;font-size:12px;color:#d7c59d;line-height:1.7}
-footer{background:#151d17;color:var(--cream);padding:75px 0 25px}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;padding-bottom:60px}
-.footer-brand p{font-size:12px;line-height:1.9;color:#ffffff85;max-width:270px;margin-top:25px}
-.footer-col h4{font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:20px}
-.footer-col p,.footer-col a{display:block;font-size:12px;line-height:2.2;color:#ffffffad}
-.footer-bottom{border-top:1px solid #ffffff25;padding-top:22px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;color:#ffffff80;text-transform:uppercase}
-.reveal{opacity:0;transform:translateY(25px);transition:.8s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:850px){.links{gap:14px}.story{grid-template-columns:1fr}.story-image{min-height:420px}.story-copy{padding:75px 8%}.exp-grid{gap:40px}.booking-grid{gap:45px}}
-@media(max-width:650px){
- .toggle{display:block;cursor:pointer}
- .links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--cream);color:var(--green);padding:25px 6%;flex-direction:column;align-items:stretch}
- .links.open{display:flex}
- .links a{text-align:center;padding:8px}
- .hero{min-height:750px;min-height:100svh;background-position:60%}
- .hero h1{font-size:clamp(70px,17vw,105px)}
- .hero-bottom{font-size:7px}
- .intro{padding:95px 0}
- .intro p{font-size:22px}
- .story-image{min-height:330px}
- .story-copy{padding:70px 7%}
- .menu{padding:95px 0}
- .tabs{gap:17px}
- .tabs button{font-size:9px}
- .dish h3{font-size:22px}
- .quote{padding:80px 20px}
- .experience{padding:90px 0}
- .exp-grid{grid-template-columns:1fr;gap:35px}
- .exp-image{height:400px;order:2}
- .exp-copy{order:1}
- .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
- .gallery .large{grid-column:span 2;grid-row:auto}
- .booking{padding:90px 0}
- .booking-grid{grid-template-columns:1fr;gap:45px}
- .form{grid-template-columns:1fr}
- .field.full,.form button,#message{grid-column:auto}
- .form button{width:100%}
- .footer-grid{grid-template-columns:1fr 1fr;gap:35px}
- .footer-brand{grid-column:1/-1}
+button,input,textarea{font-family:inherit}
+img{display:block;width:100%;object-fit:cover}
+.container{width:min(1160px,88%);margin:auto}
+.serif{font-family:'Italiana',serif;font-weight:400}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--oro)}
+.section{padding:110px 0}
+.section-title{font-size:clamp(42px,6vw,72px);line-height:1.05;margin:20px 0 25px}
+.section-copy{font-size:14px;line-height:1.9;color:#77766e;max-width:520px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;background:var(--verde);color:var(--avorio);font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--verde);transition:.3s}
+.btn:hover{background:transparent;color:var(--verde)}
+header{position:absolute;z-index:10;top:0;left:0;width:100%;padding:28px 6%;display:flex;align-items:center;justify-content:space-between;color:white;border-bottom:1px solid rgba(255,255,255,.2)}
+.logo{font-family:'Italiana',serif;font-size:27px;letter-spacing:2px}
+.logo small{display:block;font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:4px;text-align:center;margin-top:2px}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+nav a:hover{color:var(--oro)}
+.nav-book{border:1px solid rgba(255,255,255,.65);padding:12px 18px}
+.hero{height:100vh;min-height:650px;position:relative;display:flex;align-items:center;color:white;background:linear-gradient(90deg,rgba(13,22,17,.72),rgba(13,22,17,.12)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=90') center/cover}
+.hero-content{width:min(1160px,88%);margin:auto;padding-top:65px}
+.hero .eyebrow{color:#d4bb8b}
+.hero h1{font-family:'Italiana',serif;font-size:clamp(65px,10vw,130px);font-weight:400;line-height:.95;margin:25px 0}
+.hero p{font-size:14px;letter-spacing:1px;color:#e4e0d7;margin-bottom:35px}
+.hero .btn{background:var(--avorio);color:var(--verde);border-color:var(--avorio)}
+.hero .btn:hover{background:transparent;color:white}
+.hero-bottom{position:absolute;bottom:35px;left:6%;right:6%;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#ddd}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.intro-image{height:570px}
+.intro-image img{height:100%}
+.intro-text{padding:30px 0}
+.intro-text .section-title{max-width:470px}
+.intro-text .section-copy{margin-bottom:30px}
+.philosophy{background:#e9e4d9}
+.philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.philosophy-image{height:490px}
+.philosophy-image img{height:100%}
+.philosophy-text .section-copy{margin-top:20px}
+.menu-section{background:var(--verde);color:var(--avorio)}
+.menu-heading{text-align:center;margin-bottom:55px}
+.menu-heading .section-title{margin-bottom:15px}
+.menu-tabs{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:45px}
+.menu-tab{border:1px solid rgba(244,240,231,.35);background:transparent;color:var(--avorio);padding:12px 22px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
+.menu-tab.active,.menu-tab:hover{background:var(--oro);border-color:var(--oro);color:#202a22}
+.menu-items{max-width:760px;margin:auto}
+.menu-item{display:flex;justify-content:space-between;gap:25px;padding:22px 0;border-bottom:1px solid rgba(244,240,231,.2)}
+.menu-item h3{font-family:'Italiana',serif;font-size:25px;font-weight:400;margin-bottom:7px}
+.menu-item p{font-size:11px;color:#c5c8bd;line-height:1.7}
+.menu-price{color:var(--oro);font-size:14px;white-space:nowrap}
+.quote{padding:120px 10%;text-align:center;background:#e9e4d9}
+.quote p{font-family:'Italiana',serif;font-size:clamp(35px,5vw,60px);line-height:1.2;max-width:850px;margin:25px auto}
+.quote span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#8d7958}
+.experience{display:grid;grid-template-columns:1fr 1fr;gap:85px;align-items:center}
+.experience-image{height:570px}
+.experience-image img{height:100%}
+.experience-text .section-copy{margin:20px 0 30px}
+.gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
+.gallery img{height:350px}
+.gallery img:first-child{height:420px}
+.gallery-wrap{background:#e9e4d9;padding:100px 0}
+.gallery-heading{text-align:center;margin-bottom:45px}
+.gallery-heading h2{font-size:55px}
+ 
+/* NUOVA PRENOTAZIONE */
+#prenota{background:var(--verde-scuro);color:var(--avorio);padding:115px 6%}
+.booking-layout{max-width:1200px;margin:auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}
+.booking-intro .eyebrow{color:var(--oro)}
+.booking-intro h2{font-family:'Italiana',serif;font-size:clamp(55px,6vw,82px);font-weight:400;line-height:1.02;margin:28px 0}
+.booking-intro h2 em{color:var(--oro);font-weight:400}
+.booking-intro p{font-size:14px;line-height:1.9;color:#d0cfc5;max-width:390px}
+.booking-details{border-top:1px solid rgba(244,240,231,.22);margin-top:50px;padding-top:22px;font-size:10px;letter-spacing:1.5px;line-height:2;color:#b9b8ae}
+.booking-card{background:var(--avorio);color:var(--verde);padding:clamp(25px,4vw,48px);box-shadow:0 25px 80px rgba(0,0,0,.2)}
+.booking-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8d1c4;padding-bottom:20px;margin-bottom:30px}
+.booking-top span{font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.booking-step{color:#9a7a4e}
+.booking-card h3{font-family:'Italiana',serif;font-size:36px;font-weight:400;margin-bottom:8px}
+.booking-subtitle{font-size:12px;color:#77766e;line-height:1.7;margin-bottom:25px}
+.booking-label{display:block;text-transform:uppercase;letter-spacing:1.5px;font-size:10px;margin:24px 0 12px;color:#555b50}
+.booking-input{width:100%;min-height:48px;border:1px solid #d8d1c4;background:transparent;padding:12px 14px;color:var(--verde);font-size:13px;outline:none;border-radius:0}
+.booking-input:focus{border-color:#9a7a4e}
+.booking-times{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.booking-time{border:1px solid #d8d1c4;background:transparent;color:var(--verde);min-height:43px;font-size:12px;cursor:pointer;transition:.2s}
+.booking-time:hover,.booking-time.active{background:var(--verde);color:var(--avorio);border-color:var(--verde)}
+.booking-guests{display:flex;align-items:center;justify-content:space-between;border:1px solid #d8d1c4;padding:8px 12px}
+.booking-guests button{border:0;background:transparent;color:var(--verde);font-size:23px;width:36px;height:35px;cursor:pointer}
+.booking-guests strong{font-size:13px;font-weight:500}
+.booking-next{width:100%;margin-top:30px;background:var(--verde);color:var(--avorio);border:1px solid var(--verde);padding:17px;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.3s}
+.booking-next:hover{background:transparent;color:var(--verde)}
+.booking-back{border:0;background:transparent;color:#77766e;text-decoration:underline;cursor:pointer;font-size:11px;margin-top:18px}
+.booking-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.booking-fields .full{grid-column:1/-1}
+.booking-success{text-align:center;padding:35px 5px}
+.booking-success .success-symbol{font-family:'Italiana',serif;font-size:65px;color:var(--oro);margin-bottom:15px}
+.booking-success p{font-size:13px;color:#77766e;line-height:1.8;margin-top:12px}
+.booking-disclaimer{font-size:10px;color:#89877e;line-height:1.7;margin-top:20px;text-align:center}
+.booking-hidden{display:none!important}
+footer{background:#18231c;color:var(--avorio);padding:70px 6% 30px}
+.footer-main{max-width:1160px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding-bottom:60px}
+.footer-brand{font-family:'Italiana',serif;font-size:36px;letter-spacing:2px}
+.footer-brand small{display:block;font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:4px;margin-top:5px}
+.footer-col h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--oro);margin-bottom:20px}
+.footer-col p,.footer-col a{display:block;font-size:12px;color:#c5c8bd;line-height:2.2}
+.footer-bottom{max-width:1160px;margin:auto;border-top:1px solid rgba(255,255,255,.15);padding-top:25px;display:flex;justify-content:space-between;font-size:10px;color:#a7aa9f;letter-spacing:1px}
+@media(max-width:800px){
+ header{padding:20px 6%}
+ nav{gap:13px}
+ nav a{font-size:8px}
+ .nav-book{padding:9px}
+ .intro,.philosophy-grid,.experience,.booking-layout{grid-template-columns:1fr;gap:45px}
+ .intro-image{height:400px}
+ .philosophy-image,.experience-image{height:380px}
+ .booking-layout{gap:55px}
+ .booking-intro h2{font-size:65px}
+ .gallery{grid-template-columns:1fr 1fr}
+ .gallery img,.gallery img:first-child{height:260px}
+ .footer-main{grid-template-columns:1fr 1fr}
+ .footer-main>div:first-child{grid-column:1/-1}
+}
+@media(max-width:520px){
+ header{align-items:flex-start}
+ .logo{font-size:21px}
+ nav{gap:9px;padding-top:5px}
+ nav a{font-size:7px;letter-spacing:.5px}
+ nav a:nth-child(2),nav a:nth-child(3){display:none}
+ .hero{min-height:650px}
+ .hero h1{font-size:68px}
+ .section{padding:75px 0}
+ .intro-image{height:320px}
+ .booking-times{grid-template-columns:repeat(3,1fr)}
+ .booking-fields{grid-template-columns:1fr}
+ .booking-fields .full{grid-column:auto}
+ .booking-card{padding:24px 19px}
+ .booking-card h3{font-size:31px}
+ .gallery-wrap{padding:75px 0}
+ .gallery{gap:7px}
+ .gallery img,.gallery img:first-child{height:190px}
+ .footer-main{grid-template-columns:1fr}
+ .footer-main>div:first-child{grid-column:auto}
  .footer-bottom{flex-direction:column;gap:12px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
+
 <body>
 
-<header id="header">
- <div class="container nav">
-  <a href="#home" class="logo">OSTERIA NOBILE<small>CUCINA ITALIANA</small></a>
-  <button class="toggle" id="toggle" aria-label="Apri menu">☰</button>
-  <nav class="links" id="links">
-   <a href="#filosofia">Filosofia</a>
-   <a href="#menu">La carta</a>
-   <a href="#esperienza">Esperienza</a>
-   <a href="#contatti">Contatti</a>
-   <a href="#prenota" class="reservation">Prenota un tavolo</a>
+<header>
+  <a class="logo" href="#inizio">OSTERIA NOBILE<small>CUCINA ITALIANA</small></a>
+  <nav>
+    <a href="#filosofia">Filosofia</a>
+    <a href="#menu">La carta</a>
+    <a href="#esperienza">Esperienza</a>
+    <a class="nav-book" href="#prenota">Prenota</a>
   </nav>
- </div>
 </header>
 
 <main>
-<section class="hero" id="home">
- <div class="hero-content">
-  <span class="eyebrow">Una cucina, una storia, un'identità</span>
-  <h1>Il gusto<br><em>della bellezza.</em></h1>
-  <p>Un incontro tra tradizione italiana, ricerca contemporanea e ingredienti scelti con cura. Perché le esperienze migliori meritano il tempo di essere vissute.</p>
-  <a href="#filosofia" class="btn btn-outline">Scopri Osteria Nobile</a>
- </div>
- <div class="hero-bottom"><span>Tradizione · Territorio · Ricerca</span><span>Il piacere di stare a tavola</span></div>
-</section>
-
-<section class="intro container">
- <span class="eyebrow">Benvenuti</span>
- <h2>La cucina è un linguaggio.<br>La nostra storia, il suo racconto.</h2>
- <div class="line" style="margin:28px auto"></div>
- <p>Ci sono sapori che riportano a casa, profumi che raccontano una stagione e momenti che restano. Osteria Nobile nasce per dare valore a tutto questo.</p>
-</section>
-
-<section class="story" id="filosofia">
- <div class="story-image"></div>
- <div class="story-copy">
-  <span class="eyebrow">La nostra filosofia</span>
-  <h2>La bellezza<br>della semplicità.</h2>
-  <div class="line"></div>
-  <p>Crediamo in una cucina che non ha bisogno di eccessi per emozionare. Selezioniamo ingredienti, rispettiamo le stagioni e valorizziamo la tradizione con uno sguardo contemporaneo. Ogni piatto nasce da un'idea semplice: lasciare parlare il gusto.</p>
-  <a href="#menu" class="btn btn-outline">Esplora la carta</a>
- </div>
-</section>
-
-<section class="menu" id="menu">
- <div class="container">
-  <div class="heading">
-   <span class="eyebrow">La proposta gastronomica</span>
-   <h2>La nostra carta.</h2>
-   <p>Una selezione dimostrativa ispirata alla cucina italiana.</p>
+<section class="hero" id="inizio">
+  <div class="hero-content">
+    <span class="eyebrow">Un luogo, una passione, una storia</span>
+    <h1>Il gusto<br>della bellezza.</h1>
+    <p>La tradizione italiana incontra una nuova idea di cucina.</p>
+    <a class="btn" href="#menu">Scopri la nostra carta</a>
   </div>
-  <div class="tabs">
-   <button class="active" data-cat="antipasti">Antipasti</button>
-   <button data-cat="primi">Primi</button>
-   <button data-cat="secondi">Secondi</button>
-   <button data-cat="dolci">Dessert</button>
+  <div class="hero-bottom">
+    <span>Osteria Nobile — Italia</span>
+    <span>Una storia da assaporare</span>
   </div>
-  <div class="dishes" id="dishes"></div>
-  <p style="text-align:center;font-size:10px;color:#77766d;margin-top:30px">Piatti e prezzi indicativi, personalizzabili.</p>
- </div>
+</section>
+
+<section class="section">
+  <div class="container intro">
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=85" alt="Elegante sala di ristorante">
+    </div>
+    <div class="intro-text">
+      <span class="eyebrow">Benvenuti a Osteria Nobile</span>
+      <h2 class="section-title serif">Il piacere delle cose fatte con cura.</h2>
+      <p class="section-copy">Crediamo nella bellezza dei gesti semplici, nella qualità delle materie prime e nel valore del tempo trascorso a tavola. Ogni piatto racconta una storia fatta di ricerca, territorio e passione.</p>
+      <a href="#filosofia" class="btn">La nostra filosofia</a>
+    </div>
+  </div>
+</section>
+
+<section class="section philosophy" id="filosofia">
+  <div class="container philosophy-grid">
+    <div class="philosophy-text">
+      <span class="eyebrow">La nostra filosofia</span>
+      <h2 class="section-title serif">La tradizione, con uno sguardo nuovo.</h2>
+      <p class="section-copy">Selezioniamo ingredienti di qualità, valorizziamo i sapori autentici e li accompagniamo con una sensibilità contemporanea. Per noi cucinare significa rispettare la materia prima e sorprendere senza perdere la propria identità.</p>
+    </div>
+    <div class="philosophy-image">
+      <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1100&q=85" alt="Preparazione di una ricetta">
+    </div>
+  </div>
+</section>
+
+<section class="section menu-section" id="menu">
+  <div class="container">
+    <div class="menu-heading">
+      <span class="eyebrow">Una selezione da assaporare</span>
+      <h2 class="section-title serif">La nostra carta.</h2>
+      <p class="section-copy" style="margin:auto;color:#c5c8bd">Sapori riconoscibili, ingredienti scelti e una cucina che ama raccontarsi.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active" data-menu="antipasti">Antipasti</button>
+      <button class="menu-tab" data-menu="primi">Primi</button>
+      <button class="menu-tab" data-menu="secondi">Secondi</button>
+      <button class="menu-tab" data-menu="dessert">Dessert</button>
+    </div>
+    <div class="menu-items" id="menu-items"></div>
+  </div>
 </section>
 
 <section class="quote">
- <span class="eyebrow">Una questione di gusto</span>
- <blockquote>“Non si tratta soltanto di mangiare bene. Si tratta di sentirsi nel posto giusto.”</blockquote>
- <p>Osteria Nobile · La nostra idea di accoglienza</p>
+  <span>La bellezza è nei dettagli</span>
+  <p>«A tavola, il tempo ritrova il suo valore.»</p>
+  <span>Osteria Nobile</span>
 </section>
 
-<section class="experience" id="esperienza">
- <div class="container exp-grid">
-  <div class="exp-image"></div>
-  <div class="exp-copy">
-   <span class="eyebrow">L'esperienza</span>
-   <h2>Il piacere<br>di ritrovarsi.</h2>
-   <div class="line"></div>
-   <p>Una tavola preparata con attenzione, un ambiente che invita a rallentare, una cucina che sorprende senza perdere autenticità. Ogni dettaglio contribuisce a creare un'esperienza da ricordare.</p>
-   <div class="values">
-    <div class="value"><strong>Territorio</strong><span>Materia prima selezionata</span></div>
-    <div class="value"><strong>Stagione</strong><span>Rispetto dei ritmi naturali</span></div>
-    <div class="value"><strong>Ricerca</strong><span>Tradizione contemporanea</span></div>
-    <div class="value"><strong>Accoglienza</strong><span>Attenzione a ogni ospite</span></div>
-   </div>
+<section class="section" id="esperienza">
+  <div class="container experience">
+    <div class="experience-text">
+      <span class="eyebrow">L'esperienza</span>
+      <h2 class="section-title serif">Non soltanto una cena. Un momento da vivere.</h2>
+      <p class="section-copy">L'atmosfera, l'accoglienza, la cura del servizio e il piacere di condividere. Ogni elemento contribuisce a rendere speciale il tempo trascorso da Osteria Nobile.</p>
+      <a href="#prenota" class="btn">Il tuo tavolo ti aspetta</a>
+    </div>
+    <div class="experience-image">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=85" alt="Atmosfera accogliente di un ristorante">
+    </div>
   </div>
- </div>
 </section>
 
-<section class="gallery">
- <figure class="large"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=85" alt="Sala di ristorante elegante"></figure>
- <figure><img loading="lazy" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85" alt="Piatto gastronomico"></figure>
- <figure><img loading="lazy" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=800&q=85" alt="Cucina italiana"></figure>
- <figure><img loading="lazy" src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=800&q=85" alt="Ingredienti freschi"></figure>
- <figure><img loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=85" alt="Interno ristorante"></figure>
-</section>
-
-<section class="booking" id="prenota">
- <div class="container booking-grid">
-  <div class="booking-copy">
-   <span class="eyebrow">Il vostro tavolo</span>
-   <h2>La prossima<br>storia inizia qui.</h2>
-   <div class="line"></div>
-   <p>Che sia un'occasione speciale o il piacere di una serata insieme, saremo felici di accogliervi.</p>
-   <p class="note">ORARI, INDIRIZZO E CONTATTI DA DEFINIRE<br>Concept dimostrativo: il modulo non invia prenotazioni reali.</p>
+<section class="gallery-wrap">
+  <div class="container">
+    <div class="gallery-heading">
+      <span class="eyebrow">Un assaggio della nostra atmosfera</span>
+      <h2 class="serif">La bellezza da vicino.</h2>
+    </div>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85" alt="Piatto della cucina italiana">
+      <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=900&q=85" alt="Piatto preparato con cura">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85" alt="Ingredienti freschi">
+    </div>
   </div>
-  <form class="form" id="bookingForm">
-   <div class="field"><label for="nome">Nome e cognome</label><input id="nome" required placeholder="Il vostro nome"></div>
-   <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="nome@email.it"></div>
-   <div class="field"><label for="data">Data</label><input id="data" type="date" required></div>
-   <div class="field"><label for="ora">Orario</label><select id="ora" required><option value="">Seleziona</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></div>
-   <div class="field"><label for="ospiti">Ospiti</label><select id="ospiti" required><option value="">Seleziona</option><option>1 persona</option><option>2 persone</option><option>3 persone</option><option>4 persone</option><option>5 persone</option><option>6 persone</option><option>7 o più persone</option></select></div>
-   <div class="field"><label for="telefono">Telefono</label><input id="telefono" type="tel" placeholder="Numero di telefono"></div>
-   <div class="field full"><label for="note">Richieste particolari</label><textarea id="note" placeholder="Allergie, occasioni speciali..."></textarea></div>
-   <button class="btn" type="submit">Invia richiesta</button>
-   <p id="message" aria-live="polite"></p>
-  </form>
- </div>
+</section>
+
+<!-- PRENOTAZIONE COMPLETAMENTE RIDISEGNATA -->
+<section id="prenota">
+  <div class="booking-layout">
+    <div class="booking-intro">
+      <span class="eyebrow">Il vostro tavolo</span>
+      <h2>La prossima<br><em>storia</em> inizia qui.</h2>
+      <p>Che sia un'occasione speciale o il piacere di una serata insieme, saremo felici di accogliervi.</p>
+      <div class="booking-details">
+        ORARI, INDIRIZZO E CONTATTI DA DEFINIRE<br>
+        OSTERIA NOBILE · CUCINA ITALIANA
+      </div>
+    </div>
+
+    <div class="booking-card">
+      <div id="booking-step-one">
+        <div class="booking-top">
+          <span>La tua prenotazione</span>
+          <span class="booking-step">01 / 02</span>
+        </div>
+        <h3>Scegli il tuo momento.</h3>
+        <p class="booking-subtitle">Seleziona il giorno, l'orario e il numero di persone. Il resto lo faremo insieme.</p>
+
+        <label class="booking-label" for="booking-date">Il giorno che preferisci</label>
+        <input class="booking-input" type="date" id="booking-date">
+
+        <span class="booking-label">Scegli l'orario</span>
+        <div class="booking-times" id="booking-times">
+          <button type="button" class="booking-time">12:00</button>
+          <button type="button" class="booking-time">12:30</button>
+          <button type="button" class="booking-time">13:00</button>
+          <button type="button" class="booking-time">13:30</button>
+          <button type="button" class="booking-time">19:00</button>
+          <button type="button" class="booking-time">19:30</button>
+          <button type="button" class="booking-time">20:00</button>
+          <button type="button" class="booking-time">20:30</button>
+          <button type="button" class="booking-time">21:00</button>
+        </div>
+
+        <span class="booking-label">Quanti sarete?</span>
+        <div class="booking-guests">
+          <button type="button" id="guest-minus" aria-label="Diminuisci ospiti">−</button>
+          <strong id="guest-count">2 persone</strong>
+          <button type="button" id="guest-plus" aria-label="Aumenta ospiti">+</button>
+        </div>
+
+        <button type="button" class="booking-next" id="booking-continue">Continua →</button>
+        <p class="booking-disclaimer">Concept dimostrativo · Nessuna disponibilità reale viene verificata.</p>
+      </div>
+
+      <div id="booking-step-two" class="booking-hidden">
+        <div class="booking-top">
+          <span>I tuoi dettagli</span>
+          <span class="booking-step">02 / 02</span>
+        </div>
+        <h3>Come possiamo accoglierti?</h3>
+        <p class="booking-subtitle">Lasciaci i tuoi riferimenti e raccontaci eventuali esigenze particolari.</p>
+
+        <div class="booking-fields">
+          <div class="full">
+            <label class="booking-label" for="booking-name">Nome e cognome</label>
+            <input class="booking-input" id="booking-name" type="text" placeholder="Il tuo nome" required>
+          </div>
+          <div>
+            <label class="booking-label" for="booking-email">Indirizzo email</label>
+            <input class="booking-input" id="booking-email" type="email" placeholder="nome@email.it" required>
+          </div>
+          <div>
+            <label class="booking-label" for="booking-phone">Telefono</label>
+            <input class="booking-input" id="booking-phone" type="tel" placeholder="Il tuo numero">
+          </div>
+          <div class="full">
+            <label class="booking-label" for="booking-notes">Richieste particolari</label>
+            <textarea class="booking-input" id="booking-notes" rows="3" placeholder="Allergie, intolleranze o occasioni speciali..."></textarea>
+          </div>
+        </div>
+
+        <button type="button" class="booking-next" id="booking-send">Conferma la richiesta</button>
+        <button type="button" class="booking-back" id="booking-back">← Torna alla scelta</button>
+        <p class="booking-disclaimer">I dati inseriti in questa demo non vengono inviati né salvati.</p>
+      </div>
+
+      <div id="booking-success" class="booking-hidden booking-success">
+        <div class="success-symbol">✳</div>
+        <h3>Grazie per averci scelto.</h3>
+        <p>La tua richiesta dimostrativa è stata completata. In un sito reale, qui potresti ricevere la conferma del ristorante.</p>
+        <p class="booking-disclaimer">Questa è una simulazione: non è stata effettuata alcuna prenotazione.</p>
+        <button type="button" class="booking-next" id="booking-restart">Torna all'inizio</button>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
 
-<footer id="contatti">
- <div class="container">
-  <div class="footer-grid">
-   <div class="footer-brand">
-    <a href="#home" class="logo">OSTERIA NOBILE<small>CUCINA ITALIANA</small></a>
-    <p>Il gusto della bellezza. Un luogo dove la tradizione incontra nuove idee e ogni momento a tavola ha il suo valore.</p>
-   </div>
-   <div class="footer-col"><h4>Navigazione</h4><a href="#filosofia">Filosofia</a><a href="#menu">La carta</a><a href="#esperienza">Esperienza</a><a href="#prenota">Prenotazioni</a></div>
-   <div class="footer-col"><h4>Contatti</h4><p>Indirizzo da inserire</p><p>Città da inserire</p><p>Telefono da inserire</p><p>Email da inserire</p></div>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand">OSTERIA NOBILE<small>CUCINA ITALIANA</small></div>
+      <p style="font-size:12px;color:#c5c8bd;line-height:1.9;margin-top:20px;max-width:280px">Il piacere della cucina italiana, la bellezza di ogni momento condiviso.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Esplora</h4>
+      <a href="#filosofia">La filosofia</a>
+      <a href="#menu">La carta</a>
+      <a href="#esperienza">L'esperienza</a>
+      <a href="#prenota">Prenotazioni</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contatti</h4>
+      <p>Indirizzo da definire</p>
+      <p>Telefono da definire</p>
+      <p>Email da definire</p>
+    </div>
   </div>
-  <div class="footer-bottom"><span>© <span id="year"></span> Osteria Nobile · Progetto dimostrativo</span><span>Realizzato da STUDIO WEB</span></div>
- </div>
+  <div class="footer-bottom">
+    <span>© 2026 OSTERIA NOBILE · PROGETTO DIMOSTRATIVO</span>
+    <span>REALIZZATO DA STUDIO WEB</span>
+  </div>
 </footer>
 
 <script>
-const menu={
- antipasti:[
-  ['Carciofo arrosto','Fonduta delicata, nocciole tostate ed erbe fresche','16 €'],
-  ['Battuta di manzo','Manzo selezionato, senape antica e olio alle erbe','18 €'],
-  ['Il mare in un assaggio','Pescato, agrumi e profumi mediterranei','19 €'],
-  ['Pane, olio e ricordi','Pane artigianale, olio extravergine e pomodoro','10 €']
- ],
- primi:[
-  ['Risotto alla stagione','Riso Carnaroli e ingredienti del momento','19 €'],
-  ['Ravioli fatti a mano','Pasta fresca, burro nocciola e salvia','20 €'],
-  ['Tagliolini al tartufo','Pasta fresca, burro di malga e tartufo','24 €'],
-  ['Spaghettone mediterraneo','Pomodoro, basilico fresco e olio extravergine','16 €']
- ],
- secondi:[
-  ['Manzo alla brace','Taglio selezionato, fondo ristretto e verdure','28 €'],
-  ['Pescato del giorno','Erbe aromatiche e contorno stagionale','27 €'],
-  ['Guancia brasata','Cottura lenta, vino rosso e purea di patate','25 €'],
-  ['Verdure dell’orto','Verdure di stagione, erbe e semi tostati','18 €']
- ],
- dolci:[
-  ['Tiramisù della casa','Mascarpone, caffè e cacao amaro','9 €'],
-  ['Crostata di stagione','Pasta frolla, frutta e crema','9 €'],
-  ['Cioccolato fondente','Mousse al cioccolato, nocciole e sale','10 €'],
-  ['Piccola pasticceria','Una selezione di dolci assaggi','12 €']
- ]
+const menuData = {
+  antipasti: [
+    ["Il giardino di stagione","Verdure di stagione, erbe aromatiche e olio extravergine","14 €"],
+    ["La nostra tartare","Manzo selezionato, senape delicata e note agrumate","18 €"],
+    ["L'incontro del mare","Selezione di mare, profumi mediterranei e agrumi","19 €"]
+  ],
+  primi: [
+    ["Risotto della tradizione","Riso Carnaroli, fondo vegetale e ingredienti di stagione","18 €"],
+    ["La pasta fatta a mano","Pasta fresca, pomodoro italiano e basilico","16 €"],
+    ["Ravioli della casa","Pasta fresca ripiena, burro e salvia","19 €"]
+  ],
+  secondi: [
+    ["Il mare nel piatto","Pesce del giorno, verdure e profumi mediterranei","25 €"],
+    ["La nostra selezione","Carne selezionata, fondo ristretto e contorno","27 €"],
+    ["L'orto contemporaneo","Verdure di stagione, cereali e legumi","20 €"]
+  ],
+  dessert: [
+    ["Il nostro tiramisù","Crema al mascarpone, caffè e cacao","9 €"],
+    ["Dolce al cioccolato","Cioccolato fondente e note di vaniglia","10 €"],
+    ["La frutta di stagione","Frutta fresca e preparazione del giorno","8 €"]
+  ]
 };
-const dishes=document.getElementById('dishes');
-function render(cat){
- dishes.innerHTML=menu[cat].map(d=>`<article class="dish"><div><h3>${d[0]}</h3><p>${d[1]}</p></div><strong>${d[2]}</strong></article>`).join('');
+
+const menuItems = document.getElementById("menu-items");
+const menuTabs = document.querySelectorAll(".menu-tab");
+
+function showMenu(category) {
+  menuItems.innerHTML = menuData[category].map(item => `
+    <div class="menu-item">
+      <div><h3>${item[0]}</h3><p>${item[1]}</p></div>
+      <span class="menu-price">${item[2]}</span>
+    </div>
+  `).join("");
 }
-render('antipasti');
-document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
- document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
- b.classList.add('active');render(b.dataset.cat);
-}));
-const header=document.getElementById('header');
-window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>50));
-const toggle=document.getElementById('toggle'),links=document.getElementById('links');
-toggle.addEventListener('click',()=>links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const date=document.getElementById('data');
-const today=new Date();
-date.min=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().split('T')[0];
-document.getElementById('bookingForm').addEventListener('submit',e=>{
- e.preventDefault();
- if(!e.currentTarget.reportValidity())return;
- document.getElementById('message').textContent='Grazie! La richiesta dimostrativa è stata compilata. Questa demo non invia prenotazioni reali.';
- e.currentTarget.reset();
- date.min=new Date().toISOString().split('T')[0];
+menuTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    menuTabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    showMenu(tab.dataset.menu);
+  });
 });
-document.getElementById('year').textContent=new Date().getFullYear();
+showMenu("antipasti");
+
+let selectedTime = "";
+let guests = 2;
+
+const dateInput = document.getElementById("booking-date");
+const today = new Date();
+const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+dateInput.min = localToday;
+dateInput.value = localToday;
+
+document.querySelectorAll(".booking-time").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".booking-time").forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    selectedTime = button.textContent;
+  });
+});
+
+function updateGuests() {
+  document.getElementById("guest-count").textContent =
+    guests === 1 ? "1 persona" : guests + " persone";
+}
+document.getElementById("guest-minus").addEventListener("click", () => {
+  guests = Math.max(1, guests - 1);
+  updateGuests();
+});
+document.getElementById("guest-plus").addEventListener("click", () => {
+  guests = Math.min(12, guests + 1);
+  updateGuests();
+});
+
+document.getElementById("booking-continue").addEventListener("click", () => {
+  if (!dateInput.value) {
+    alert("Seleziona il giorno che preferisci.");
+    return;
+  }
+  if (dateInput.value < localToday) {
+    alert("Seleziona una data valida.");
+    return;
+  }
+  if (!selectedTime) {
+    alert("Seleziona l'orario che preferisci.");
+    return;
+  }
+  document.getElementById("booking-step-one").classList.add("booking-hidden");
+  document.getElementById("booking-step-two").classList.remove("booking-hidden");
+});
+
+document.getElementById("booking-back").addEventListener("click", () => {
+  document.getElementById("booking-step-two").classList.add("booking-hidden");
+  document.getElementById("booking-step-one").classList.remove("booking-hidden");
+});
+
+document.getElementById("booking-send").addEventListener("click", () => {
+  const name = document.getElementById("booking-name");
+  const email = document.getElementById("booking-email");
+  if (!name.value.trim() || !email.value.trim()) {
+    alert("Inserisci il nome e un indirizzo email.");
+    return;
+  }
+  if (!email.checkValidity()) {
+    alert("Inserisci un indirizzo email valido.");
+    return;
+  }
+  document.getElementById("booking-step-two").classList.add("booking-hidden");
+  document.getElementById("booking-success").classList.remove("booking-hidden");
+});
+
+document.getElementById("booking-restart").addEventListener("click", () => {
+  document.getElementById("booking-success").classList.add("booking-hidden");
+  document.getElementById("booking-step-one").classList.remove("booking-hidden");
+  document.getElementById("booking-name").value = "";
+  document.getElementById("booking-email").value = "";
+  document.getElementById("booking-phone").value = "";
+  document.getElementById("booking-notes").value = "";
+  selectedTime = "";
+  guests = 2;
+  updateGuests();
+  document.querySelectorAll(".booking-time").forEach(b => b.classList.remove("active"));
+});
 </script>
 </body>
 </html>
