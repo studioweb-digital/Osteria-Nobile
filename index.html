@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Osteria Nobile. Cucina italiana contemporanea, ingredienti di stagione e il piacere di stare a tavola.">
+<title>Osteria Nobile — Il gusto della bellezza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f4f0e7;--green:#26372d;--dark:#1d2821;--gold:#b69a68;--grey:#77766d;--serif:'Italiana',Georgia,serif;--sans:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+.container{width:min(1200px,88%);margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--gold)}
+h2{font-family:var(--serif);font-size:clamp(48px,7vw,88px);font-weight:400;line-height:1.02}
+.line{height:1px;width:55px;background:var(--gold);margin:25px 0}
+.btn{display:inline-block;padding:16px 25px;background:var(--gold);color:#fff;text-transform:uppercase;font-size:9px;letter-spacing:2px;border:1px solid var(--gold);transition:.3s}
+.btn:hover{background:transparent;color:var(--gold)}
+.btn-outline{background:transparent;color:#fff}
+.btn-outline:hover{background:var(--gold);color:white}
+header{position:fixed;top:0;left:0;width:100%;z-index:10;padding:24px 0;color:white;transition:.3s}
+header.scrolled{background:rgba(244,240,231,.97);color:var(--green);padding:15px 0;box-shadow:0 5px 25px #0000000c}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:29px;letter-spacing:2px}
+.logo small{display:block;font-family:var(--sans);font-size:7px;letter-spacing:4px;text-align:center;margin-top:3px}
+.links{display:flex;align-items:center;gap:30px}
+.links a{font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.links a:hover{color:var(--gold)}
+.links .reservation{border:1px solid var(--gold);padding:12px 16px}
+.toggle{display:none;background:none;border:0;color:inherit;font-size:26px}
+.hero{height:100svh;min-height:650px;position:relative;display:flex;align-items:center;color:white;background:linear-gradient(90deg,rgba(15,25,18,.78),rgba(15,25,18,.12)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=90') center/cover}
+.hero-content{width:min(1200px,88%);margin:auto;padding-top:50px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(75px,12vw,155px);line-height:.82;margin:28px 0}
+.hero h1 em{color:#d4bd91;font-style:normal}
+.hero p{font-size:13px;line-height:2;color:#ffffffc9;max-width:430px;margin-bottom:32px}
+.hero-bottom{position:absolute;bottom:30px;left:6%;right:6%;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#ffffffad}
+.intro{text-align:center;padding:140px 0}
+.intro p{max-width:670px;margin:30px auto 0;font-family:var(--serif);font-size:27px;line-height:1.5;color:#77766d}
+.story{display:grid;grid-template-columns:1fr 1fr;background:var(--green);color:var(--cream);min-height:650px}
+.story-image{background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1300&q=85') center/cover}
+.story-copy{padding:100px clamp(35px,8vw,120px);display:flex;flex-direction:column;justify-content:center}
+.story-copy p{font-size:13px;line-height:2;color:#ffffffad;max-width:430px}
+.story-copy .btn{align-self:flex-start;margin-top:30px}
+.menu{padding:130px 0}
+.heading{text-align:center;margin-bottom:65px}
+.heading p{font-size:12px;color:var(--grey);margin-top:15px}
+.tabs{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-bottom:45px}
+.tabs button{border:0;background:none;color:var(--grey);font-size:10px;text-transform:uppercase;letter-spacing:2px;padding-bottom:10px;cursor:pointer}
+.tabs button.active{color:var(--green);border-bottom:1px solid var(--gold)}
+.dishes{max-width:760px;margin:auto}
+.dish{display:flex;justify-content:space-between;gap:20px;padding:23px 0;border-bottom:1px solid #26372d25}
+.dish h3{font-family:var(--serif);font-size:26px;font-weight:400}
+.dish p{font-size:11px;color:var(--grey);margin-top:7px;line-height:1.7}
+.dish strong{font-family:var(--serif);font-size:23px;color:var(--green);font-weight:400;white-space:nowrap}
+.quote{padding:110px 20px;text-align:center;background:#e9e3d7}
+.quote blockquote{font-family:var(--serif);font-size:clamp(35px,6vw,65px);max-width:900px;margin:25px auto;color:var(--green);line-height:1.15}
+.quote p{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--grey)}
+.experience{padding:130px 0}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.exp-image{height:600px;background:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85') center/cover}
+.exp-copy p{font-size:13px;line-height:2;color:var(--grey);margin-top:25px;max-width:450px}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:35px}
+.value{border-top:1px solid #b69a6870;padding-top:15px}
+.value strong{font-family:var(--serif);font-size:24px;font-weight:400}
+.value span{display:block;font-size:10px;color:var(--grey);margin-top:5px}
+.gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:270px 270px;gap:7px}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gallery figure{overflow:hidden}
+.gallery figure:hover img{transform:scale(1.05)}
+.gallery .large{grid-row:span 2}
+.booking{background:var(--dark);color:var(--cream);padding:130px 0}
+.booking-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px}
+.booking-copy p{font-size:13px;line-height:2;color:#ffffffad;margin-top:25px;max-width:360px}
+.booking-copy .note{font-size:10px;color:var(--gold);margin-top:35px;line-height:1.8}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.field{display:flex;flex-direction:column;gap:9px}
+.field.full{grid-column:1/-1}
+.field label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid #ffffff50;color:white;padding:13px 0;outline:none;width:100%;border-radius:0}
+.field select option{color:#1d2821}
+.field textarea{min-height:80px;resize:vertical}
+.form button{grid-column:1/-1;justify-self:start;margin-top:15px;cursor:pointer}
+#message{grid-column:1/-1;font-size:12px;color:#d7c59d;line-height:1.7}
+footer{background:#151d17;color:var(--cream);padding:75px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;padding-bottom:60px}
+.footer-brand p{font-size:12px;line-height:1.9;color:#ffffff85;max-width:270px;margin-top:25px}
+.footer-col h4{font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:20px}
+.footer-col p,.footer-col a{display:block;font-size:12px;line-height:2.2;color:#ffffffad}
+.footer-bottom{border-top:1px solid #ffffff25;padding-top:22px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;color:#ffffff80;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(25px);transition:.8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:850px){.links{gap:14px}.story{grid-template-columns:1fr}.story-image{min-height:420px}.story-copy{padding:75px 8%}.exp-grid{gap:40px}.booking-grid{gap:45px}}
+@media(max-width:650px){
+ .toggle{display:block;cursor:pointer}
+ .links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--cream);color:var(--green);padding:25px 6%;flex-direction:column;align-items:stretch}
+ .links.open{display:flex}
+ .links a{text-align:center;padding:8px}
+ .hero{min-height:750px;min-height:100svh;background-position:60%}
+ .hero h1{font-size:clamp(70px,17vw,105px)}
+ .hero-bottom{font-size:7px}
+ .intro{padding:95px 0}
+ .intro p{font-size:22px}
+ .story-image{min-height:330px}
+ .story-copy{padding:70px 7%}
+ .menu{padding:95px 0}
+ .tabs{gap:17px}
+ .tabs button{font-size:9px}
+ .dish h3{font-size:22px}
+ .quote{padding:80px 20px}
+ .experience{padding:90px 0}
+ .exp-grid{grid-template-columns:1fr;gap:35px}
+ .exp-image{height:400px;order:2}
+ .exp-copy{order:1}
+ .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+ .gallery .large{grid-column:span 2;grid-row:auto}
+ .booking{padding:90px 0}
+ .booking-grid{grid-template-columns:1fr;gap:45px}
+ .form{grid-template-columns:1fr}
+ .field.full,.form button,#message{grid-column:auto}
+ .form button{width:100%}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:35px}
+ .footer-brand{grid-column:1/-1}
+ .footer-bottom{flex-direction:column;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header id="header">
+ <div class="container nav">
+  <a href="#home" class="logo">OSTERIA NOBILE<small>CUCINA ITALIANA</small></a>
+  <button class="toggle" id="toggle" aria-label="Apri menu">☰</button>
+  <nav class="links" id="links">
+   <a href="#filosofia">Filosofia</a>
+   <a href="#menu">La carta</a>
+   <a href="#esperienza">Esperienza</a>
+   <a href="#contatti">Contatti</a>
+   <a href="#prenota" class="reservation">Prenota un tavolo</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-content">
+  <span class="eyebrow">Una cucina, una storia, un'identità</span>
+  <h1>Il gusto<br><em>della bellezza.</em></h1>
+  <p>Un incontro tra tradizione italiana, ricerca contemporanea e ingredienti scelti con cura. Perché le esperienze migliori meritano il tempo di essere vissute.</p>
+  <a href="#filosofia" class="btn btn-outline">Scopri Osteria Nobile</a>
+ </div>
+ <div class="hero-bottom"><span>Tradizione · Territorio · Ricerca</span><span>Il piacere di stare a tavola</span></div>
+</section>
+
+<section class="intro container">
+ <span class="eyebrow">Benvenuti</span>
+ <h2>La cucina è un linguaggio.<br>La nostra storia, il suo racconto.</h2>
+ <div class="line" style="margin:28px auto"></div>
+ <p>Ci sono sapori che riportano a casa, profumi che raccontano una stagione e momenti che restano. Osteria Nobile nasce per dare valore a tutto questo.</p>
+</section>
+
+<section class="story" id="filosofia">
+ <div class="story-image"></div>
+ <div class="story-copy">
+  <span class="eyebrow">La nostra filosofia</span>
+  <h2>La bellezza<br>della semplicità.</h2>
+  <div class="line"></div>
+  <p>Crediamo in una cucina che non ha bisogno di eccessi per emozionare. Selezioniamo ingredienti, rispettiamo le stagioni e valorizziamo la tradizione con uno sguardo contemporaneo. Ogni piatto nasce da un'idea semplice: lasciare parlare il gusto.</p>
+  <a href="#menu" class="btn btn-outline">Esplora la carta</a>
+ </div>
+</section>
+
+<section class="menu" id="menu">
+ <div class="container">
+  <div class="heading">
+   <span class="eyebrow">La proposta gastronomica</span>
+   <h2>La nostra carta.</h2>
+   <p>Una selezione dimostrativa ispirata alla cucina italiana.</p>
+  </div>
+  <div class="tabs">
+   <button class="active" data-cat="antipasti">Antipasti</button>
+   <button data-cat="primi">Primi</button>
+   <button data-cat="secondi">Secondi</button>
+   <button data-cat="dolci">Dessert</button>
+  </div>
+  <div class="dishes" id="dishes"></div>
+  <p style="text-align:center;font-size:10px;color:#77766d;margin-top:30px">Piatti e prezzi indicativi, personalizzabili.</p>
+ </div>
+</section>
+
+<section class="quote">
+ <span class="eyebrow">Una questione di gusto</span>
+ <blockquote>“Non si tratta soltanto di mangiare bene. Si tratta di sentirsi nel posto giusto.”</blockquote>
+ <p>Osteria Nobile · La nostra idea di accoglienza</p>
+</section>
+
+<section class="experience" id="esperienza">
+ <div class="container exp-grid">
+  <div class="exp-image"></div>
+  <div class="exp-copy">
+   <span class="eyebrow">L'esperienza</span>
+   <h2>Il piacere<br>di ritrovarsi.</h2>
+   <div class="line"></div>
+   <p>Una tavola preparata con attenzione, un ambiente che invita a rallentare, una cucina che sorprende senza perdere autenticità. Ogni dettaglio contribuisce a creare un'esperienza da ricordare.</p>
+   <div class="values">
+    <div class="value"><strong>Territorio</strong><span>Materia prima selezionata</span></div>
+    <div class="value"><strong>Stagione</strong><span>Rispetto dei ritmi naturali</span></div>
+    <div class="value"><strong>Ricerca</strong><span>Tradizione contemporanea</span></div>
+    <div class="value"><strong>Accoglienza</strong><span>Attenzione a ogni ospite</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="gallery">
+ <figure class="large"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=85" alt="Sala di ristorante elegante"></figure>
+ <figure><img loading="lazy" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85" alt="Piatto gastronomico"></figure>
+ <figure><img loading="lazy" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=800&q=85" alt="Cucina italiana"></figure>
+ <figure><img loading="lazy" src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=800&q=85" alt="Ingredienti freschi"></figure>
+ <figure><img loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=85" alt="Interno ristorante"></figure>
+</section>
+
+<section class="booking" id="prenota">
+ <div class="container booking-grid">
+  <div class="booking-copy">
+   <span class="eyebrow">Il vostro tavolo</span>
+   <h2>La prossima<br>storia inizia qui.</h2>
+   <div class="line"></div>
+   <p>Che sia un'occasione speciale o il piacere di una serata insieme, saremo felici di accogliervi.</p>
+   <p class="note">ORARI, INDIRIZZO E CONTATTI DA DEFINIRE<br>Concept dimostrativo: il modulo non invia prenotazioni reali.</p>
+  </div>
+  <form class="form" id="bookingForm">
+   <div class="field"><label for="nome">Nome e cognome</label><input id="nome" required placeholder="Il vostro nome"></div>
+   <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="nome@email.it"></div>
+   <div class="field"><label for="data">Data</label><input id="data" type="date" required></div>
+   <div class="field"><label for="ora">Orario</label><select id="ora" required><option value="">Seleziona</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></div>
+   <div class="field"><label for="ospiti">Ospiti</label><select id="ospiti" required><option value="">Seleziona</option><option>1 persona</option><option>2 persone</option><option>3 persone</option><option>4 persone</option><option>5 persone</option><option>6 persone</option><option>7 o più persone</option></select></div>
+   <div class="field"><label for="telefono">Telefono</label><input id="telefono" type="tel" placeholder="Numero di telefono"></div>
+   <div class="field full"><label for="note">Richieste particolari</label><textarea id="note" placeholder="Allergie, occasioni speciali..."></textarea></div>
+   <button class="btn" type="submit">Invia richiesta</button>
+   <p id="message" aria-live="polite"></p>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer id="contatti">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a href="#home" class="logo">OSTERIA NOBILE<small>CUCINA ITALIANA</small></a>
+    <p>Il gusto della bellezza. Un luogo dove la tradizione incontra nuove idee e ogni momento a tavola ha il suo valore.</p>
+   </div>
+   <div class="footer-col"><h4>Navigazione</h4><a href="#filosofia">Filosofia</a><a href="#menu">La carta</a><a href="#esperienza">Esperienza</a><a href="#prenota">Prenotazioni</a></div>
+   <div class="footer-col"><h4>Contatti</h4><p>Indirizzo da inserire</p><p>Città da inserire</p><p>Telefono da inserire</p><p>Email da inserire</p></div>
+  </div>
+  <div class="footer-bottom"><span>© <span id="year"></span> Osteria Nobile · Progetto dimostrativo</span><span>Realizzato da STUDIO WEB</span></div>
+ </div>
+</footer>
+
+<script>
+const menu={
+ antipasti:[
+  ['Carciofo arrosto','Fonduta delicata, nocciole tostate ed erbe fresche','16 €'],
+  ['Battuta di manzo','Manzo selezionato, senape antica e olio alle erbe','18 €'],
+  ['Il mare in un assaggio','Pescato, agrumi e profumi mediterranei','19 €'],
+  ['Pane, olio e ricordi','Pane artigianale, olio extravergine e pomodoro','10 €']
+ ],
+ primi:[
+  ['Risotto alla stagione','Riso Carnaroli e ingredienti del momento','19 €'],
+  ['Ravioli fatti a mano','Pasta fresca, burro nocciola e salvia','20 €'],
+  ['Tagliolini al tartufo','Pasta fresca, burro di malga e tartufo','24 €'],
+  ['Spaghettone mediterraneo','Pomodoro, basilico fresco e olio extravergine','16 €']
+ ],
+ secondi:[
+  ['Manzo alla brace','Taglio selezionato, fondo ristretto e verdure','28 €'],
+  ['Pescato del giorno','Erbe aromatiche e contorno stagionale','27 €'],
+  ['Guancia brasata','Cottura lenta, vino rosso e purea di patate','25 €'],
+  ['Verdure dell’orto','Verdure di stagione, erbe e semi tostati','18 €']
+ ],
+ dolci:[
+  ['Tiramisù della casa','Mascarpone, caffè e cacao amaro','9 €'],
+  ['Crostata di stagione','Pasta frolla, frutta e crema','9 €'],
+  ['Cioccolato fondente','Mousse al cioccolato, nocciole e sale','10 €'],
+  ['Piccola pasticceria','Una selezione di dolci assaggi','12 €']
+ ]
+};
+const dishes=document.getElementById('dishes');
+function render(cat){
+ dishes.innerHTML=menu[cat].map(d=>`<article class="dish"><div><h3>${d[0]}</h3><p>${d[1]}</p></div><strong>${d[2]}</strong></article>`).join('');
+}
+render('antipasti');
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+ b.classList.add('active');render(b.dataset.cat);
+}));
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>50));
+const toggle=document.getElementById('toggle'),links=document.getElementById('links');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const date=document.getElementById('data');
+const today=new Date();
+date.min=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().split('T')[0];
+document.getElementById('bookingForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ if(!e.currentTarget.reportValidity())return;
+ document.getElementById('message').textContent='Grazie! La richiesta dimostrativa è stata compilata. Questa demo non invia prenotazioni reali.';
+ e.currentTarget.reset();
+ date.min=new Date().toISOString().split('T')[0];
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
